@@ -167,6 +167,40 @@
 		},
 		{
 			"name": "Update User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const test = {\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"name\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"job\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"name\",\r",
+							"    \"job\"\r",
+							"  ]\r",
+							"}\r",
+							"\r",
+							"pm.test(\"JSON schema must valid\", function (){\r",
+							"    pm.response.to.have.jsonSchema(test)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"HTTP status code must stable\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"}) "
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
